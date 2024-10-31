@@ -9,6 +9,7 @@
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
+            border: cadetblue;
         }
         th, td {
             padding: 10px;
@@ -27,25 +28,28 @@
             border-radius: 3px;
         }
         select {
+            text-align: center;
             color: black;
             font-size: 16px;
         }
-        
+        option{
+            align-items: center;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
-    <h1>Check List de Equipamentos com Códigos</h1>
+    <h1>Check-In Equipamentos com Códigos</h1>
 
     <form id="tarefas-form">
         <!-- Seleção de Setor -->
-        <h2>Selecione o Setor:</h2>
+        <h2>Setor:</h2>
         <select id="setor">
             <option value="">-- Selecione o setor --</option>
-            <option value="Recepção">Recepção</option>
             <option value="SalaManchester1">SalaManchester1</option>
             <option value="SalaManchester10">SalaManchester10</option>
-            
+            <option value="Recepção">Recepção</option>
             <option value="SalaECG">SalaECG</option>
             <option value="Procedimento">Procedimento</option>
             <option value="Estabilização">Estabilização</option>
@@ -57,30 +61,36 @@
             <option value="Enfermaria3">Enfermaria3</option>
             <option value="PostodeEnfermagem">PostodeEnfermagem</option>
             <option value="IsolamentoAdultoInternamento">IsolamentoAdultoInternamento</option>
-            <option value="SalaEquipamentos">SalaEquipamentos</option>
-            <option value="Qualificação">Qualificação</option>
             <option value="Rouparia">Rouparia</option>
             <option value="Copa">Copa</option>
             <option value="DML">DML</option>
-            
+            <option value="SalaEquipamentos">SalaEquipamentos</option>
             <option value="CentralMateriais">CentralMateriais</option>
             <option value="Morgue">Morgue</option>
             <option value="IsolamentoAdultoQualificação">IsolamentoAdultoQualificação</option>
             <option value="PostoMedicoQuali">PostoMedicoQuali</option>
-            
+            <option value="Qualificação">Qualificação</option>
             <option value="DecisãoDiagnostica">DecisãoDiagnostica</option>
             <option value="EixoFebril">EixoFebril</option>
             <option value="MedicaçãoRápida">MedicaçãoRápida</option>
             <option value="SalaInjeção">SalaInjeção</option>
+            <option value="Consultorio9">Consultorio9</option>
+            <option value="Consultorio12">Consultorio12</option>
+            <option value="Consultorio8">Consultorio8</option>
+            <option value="Consultorio7">Consultorio7</option>
+            <option value="Consultorio6">Consultorio6</option>
+            <option value="Consultorio5">Consultorio5</option>
+            <option value="Consultorio4">Consultorio4</option>
+            <option value="Consultorio3">Consultorio3</option>
+            <option value="Consultorio2">Consultorio2</option>
+            <option value="SalaMulti">SalaMulti</option>
             <option value="Manutenção">Manutenção</option>
-            <option value="Manutenção">Manutenção</option>
-            <option value="Manutenção">Manutenção</option>
-            <option value="Manutenção">Manutenção</option>
+            
         </select>
         <br><br>
 
         <!-- Seleção de Equipamento -->
-        <h2>Selecione um Equipamento:</h2>
+        <h2>Equipamento:</h2>
         <select id="tarefa">
             <option value="">-- Selecione o equipamento --</option>
             <option value="Termômetro - Infravermelho">Termômetro - Infravermelho</option>
@@ -104,12 +114,9 @@
         <br><br>
 
         <!-- Seleção do Código do Equipamento -->
-        <h2>Selecione o Código do Equipamento:</h2>
+        <h2>Código do Equipamento:</h2>
         <select id="codigo_tarefa">
             <option value="">-- Selecione o código --</option>
-            <option value="COD001">COD001 - Termômetro Infravermelho</option>
-            <option value="COD002">COD002 - Glicosímetro</option>
-            <option value="COD003">COD003 - Oxímetro de Pulso</option>
             <option value="COD999">COD999 - Manutenção</option>
             <option value="COD99">COD99 - Oxigenio</option>
             <option value="COD01">COD01</option>
@@ -136,7 +143,7 @@
         <br><br>
 
         <!-- Campo para Pontos de Melhoria -->
-        <h2>Pontos de Melhoria ou Observações:</h2>
+        <h2>Observações:</h2>
         <textarea id="melhorias" rows="4" cols="50" placeholder="Descreva melhorias ou observações..."></textarea>
         <br><br>
 
@@ -152,7 +159,7 @@
                     <th>Setor</th>
                     <th>Equipamento</th>
                     <th>Código</th>
-                    <th>Melhorias/Observações</th>
+                    <th>Observações</th>
                     <th>Ação</th>
                 </tr>
             </thead>
@@ -231,11 +238,11 @@
             
             // Centralizar o título no PDF
             var pageWidth = doc.internal.pageSize.width;
-                var title = "Upa Cajuru\nCheck-in Equipamentos e Manutenções";
+                var title = "Upa Cajuru\nCheck-in\nEquipamentos e Manutenções";
 
                 doc.setFontSize(18);
                 var titleWidth = doc.getTextWidth(title);
-                var titleX = (pageWidth - titleWidth) / 2; // Calcula a posição para centralizar
+                var titleX = (pageWidth - titleWidth) / 1; // Calcula a posição para centralizar
                 doc.text(title, titleX, 40); // Posição (x centralizado, y=40)
             
             // Inserindo a data e hora atual
@@ -280,7 +287,7 @@
                     fontStyle: 'bold',
                 },
                 bodyStyles: {
-                    fillColor: [241, 196, 15], // Cor amarela nas linhas
+                    fillColor: [156, 255, 0], // Cor amarela nas linhas
                     textColor: [0, 0, 0], // Texto preto
                 },
                 alternateRowStyles: {
